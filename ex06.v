@@ -18,11 +18,11 @@ fn sig() ([]f64, []f64) {
 fn main() {
 	_, y := sig()
 
-	mut p1 := vplot.new_plot()
+	mut p1 := vplot.new()
 
 	p1.label_x('X index')
 	p1.label_y('y=log(x)')
-	p1.plot_y(y, 'Test X only') or {
+	p1.plot(y, 'Test X only') or {
 		println('ERROR: ${err.msg()}')
 	}
 	os.input('Press any key to continue')

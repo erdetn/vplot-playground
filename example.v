@@ -1,4 +1,3 @@
-
 module main
 
 // import time
@@ -6,25 +5,26 @@ import vplot
 import os
 
 const sleep_length = 2
-const npoints      = 50
+
+const npoints = 50
 
 fn wait() {
 	// time.sleep(sleep_length)
 	rc := os.input('Press [ENTER] to continue...')
-	println('${rc} is pressed.')
+	println('$rc is pressed.')
 }
 
 fn main() {
-	mut h1 := vplot.new_plot()
-	mut h2 := vplot.new_plot()
-	mut h3 := vplot.new_plot()
-	mut h4 := vplot.new_plot()
+	mut h1 := vplot.new()
+	mut h2 := vplot.new()
+	mut h3 := vplot.new()
+	mut h4 := vplot.new()
 
 	mut x := []f64{len: npoints, cap: npoints}
 	mut y := []f64{len: npoints, cap: npoints}
 
 	println('*** example of gnuplot control through C ***\n')
-    
+
 	h1.style('lines')
 
 	println('*** plotting slopes\n')
@@ -39,11 +39,11 @@ fn main() {
 	println('y = -x\n')
 	h1.plot_slope(-1.0, 0.0, 'y=-x')
 	wait()
-	
+
 	h1.reset()
 
-    	println('\n\n')
-    	println('*** various equations\n')
+	println('\n\n')
+	println('*** various equations\n')
 	println('y = sin(x)\n')
 	h1.plot_equation('sin(x)', 'sine')
 	wait()
@@ -80,34 +80,30 @@ fn main() {
 	println('\n\n')
 	println('*** user-defined lists of doubles\n')
 	for i in 1 .. npoints {
-		x << f64(i*i)
+		x << f64(i * i)
 	}
-	h1.plot_y(x, 'user-defined doubles') or {
-		println(err.msg())
-	}
+	h1.plot(x, 'user-defined doubles') or { println(err.msg()) }
 	wait()
 
 	println('*** user-defined lists of points\n')
 	for j in 1 .. npoints {
 		x[j] = f64(j)
-		y[j] = f64(j*j)
+		y[j] = f64(j * j)
 	}
 	h1.reset()
 	h1.style('points')
-	h1.plot_xy(x, y, 'user-defined points') or {
-		println(err.msg())
-	}
+	h1.plot2(x, y, 'user-defined points') or { println(err.msg()) }
 	wait()
 
 	println('\n\n')
 	println('*** multiple output windows\n')
 	h1.reset()
 	h1.style('lines')
-	
+
 	h2.style('lines')
-	
+
 	h3.style('lines')
-	
+
 	h4.style('lines')
 
 	println('window 1: sin(x)\n')

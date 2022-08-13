@@ -18,9 +18,9 @@ fn sig() ([]f64, []f64) {
 fn main() {
 	_, y := sig()
 
-	mut p1 := vplot.new_plot()
+	mut p1 := vplot.new()
 
-	p1.plot([]f64{}, y, 'Test Y only') or {
+	p1.plot2([]f64{}, y, 'Test Y only') or {
 		println('ERROR: ${err.msg()}')
 	}
 	os.input('Press any key to continue')

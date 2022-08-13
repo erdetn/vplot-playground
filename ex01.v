@@ -4,7 +4,7 @@ import os
 import vplot
 
 fn main() {
-	mut p1 := vplot.new_plot()
+	mut p1 := vplot.new()
 
 	p1.style(vplot.style_linespoints)
 	p1.label_x('x')

@@ -12,7 +12,7 @@ fn main() {
 	cmds << 'set style data points'
 	cmds << 'plot [-10:10] sin(x),atan(x),cos(atan(x))'
 
-	mut p1 := vplot.new_plot()
+	mut p1 := vplot.new()
 
 	p1.commands(cmds)
 	os.input('Press any keys to continue...')

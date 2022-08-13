@@ -27,7 +27,7 @@ fn main() {
 		y: [f64(1), 1.0, 0.0, 1.0]
 	}
 
-	vplot.plot(p1) or {
+	vplot.plotter(p1) or {
 		println('ERROR: ${err.msg()}')
 	}
 	os.input('Press any key to continue...')
